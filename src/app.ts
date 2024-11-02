@@ -1,1 +1,7 @@
-console.log('Hola, mundo');
+(async () => {
+  main();
+})();
+
+function main() {
+  console.log('Hola, mundo');
+}
