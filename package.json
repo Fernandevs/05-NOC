@@ -8,9 +8,10 @@
     "start": "npm run build && node dist/app.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint 'src/**/*.{js,ts}'",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "docker:test": "docker compose -f docker-compose.test.yml --env-file .env.test up -d",
+    "test": "npm run docker:test && jest",
+    "test:watch": "npm run docker:test && jest --watch",
+    "test:coverage": "npm run docker:test && jest --coverage"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
