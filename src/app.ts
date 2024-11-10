@@ -1,6 +1,6 @@
 import { Server } from '@/presentation/server';
-import { MongoDatabase } from '@/data/mongo';
-import { environment } from './config/plugins/env.plugin';
+import { LogModel, MongoDatabase } from '@/data/mongo';
+import { environment } from '@/config/plugins/env.plugin';
 
 (async () => {
   main();
@@ -12,5 +12,5 @@ async function main() {
     mongoUrl: environment.MONGO_URL,
   });
 
-  // Server.start();
+  Server.start();
 }

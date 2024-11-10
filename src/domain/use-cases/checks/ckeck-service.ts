@@ -25,7 +25,7 @@ export class CheckService implements CheckServiceUseCase {
       const log = new LogEntity({
         message: `Service ${url} working`,
         level: LogSeverityLevel.low,
-        origin: '',
+        origin: 'check-service.ts',
       });
 
       this.logRepository.saveLog(log);
