@@ -11,8 +11,8 @@ const fileSystemLogRepository = new LogRepositoryImpl(
 
 export class Server {
   public static start() {
-    const emailService = new EmailService();
-    emailService.sendEmailWithFileSystemLogs(['ortizfernando05@gmail.com', 'ortizfernando05@outlook.com'])
+    // const emailService = new EmailService(fileSystemLogRepository);
+    // emailService.sendEmailWithFileSystemLogs(['ortizfernando05@gmail.com', 'ortizfernando05@outlook.com'])
     // CronService.createJob('*/5 * * * * *', () => {
     // const url = 'http://google.com';
     // new CheckService(
