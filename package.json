@@ -19,8 +19,15 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "cron": "^3.1.8",
+    "dotenv": "^16.4.5",
+    "env-var": "^7.5.0",
+    "nodemailer": "^6.9.16"
+  },
   "devDependencies": {
     "@types/node": "^22.8.6",
+    "@types/nodemailer": "^6.4.16",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^9.14.0",
@@ -33,10 +40,5 @@
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3"
-  },
-  "dependencies": {
-    "cron": "^3.1.8",
-    "dotenv": "^16.4.5",
-    "env-var": "^7.5.0"
   }
 }
