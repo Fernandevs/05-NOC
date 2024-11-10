@@ -1,18 +1,16 @@
-// import { environment } from '@/config/plugins/env.plugin';
-// import { LogRepository } from '@/domain/repositories/log.repository';
-import { LogSeverityLevel } from '@/domain/entities/log.entity';
-import { CheckService } from '@/domain/use-cases/checks/ckeck-service';
+// import { CheckService } from '@/domain/use-cases/checks/ckeck-service';
+import { CheckServiceMultiple } from '@/domain/use-cases/checks/ckeck-service-multiple';
 // import { SendEmailLogs } from '@/domain/use-cases/email/send-email-logs';
 import { FileSystemDatasource } from '@/infrastructure/datasources/file-system.datasource';
 import { MongoLogDatasource } from '@/infrastructure/datasources/mongo-log.datasource';
+import { PostgresLogDatasource } from '@/infrastructure/datasources/postgres-log.datasource';
 import { LogRepositoryImpl } from '@/infrastructure/repositories/log.repository.impl';
 import { CronService } from '@/presentation/cron/cron-service';
 // import { EmailService } from '@/presentation/email/email.service';
 
-const logRepository = new LogRepositoryImpl(
-  new FileSystemDatasource()
-  // new MongoLogDatasource()
-);
+const fsLogRepository = new LogRepositoryImpl(new FileSystemDatasource());
+const mongoLogRepository = new LogRepositoryImpl(new MongoLogDatasource());
+const postgresLogRepository = new LogRepositoryImpl(new PostgresLogDatasource());
 
 // const emailService = new EmailService();
 
@@ -26,8 +24,8 @@ export class Server {
     // emailService.sendEmailWithFileSystemLogs(['ortizfernando05@gmail.com', 'ortizfernando05@outlook.com'])
     CronService.createJob('*/5 * * * * *', () => {
       const url = 'http://google.com';
-      new CheckService(
-        logRepository,
+      new CheckServiceMultiple(
+        [fsLogRepository, mongoLogRepository, postgresLogRepository],
         () => console.log(`${url} is ok`),
         (error) => console.error(error)
       ).execute(url);

@@ -9,7 +9,7 @@ interface SendLogEmailUseCase {
 export class SendEmailLogs implements SendLogEmailUseCase {
   constructor(
     private readonly emailService: EmailService,
-    private readonly logRepository: LogRepository,
+    private readonly logRepository: LogRepository
   ) {}
 
   async execute(to: string | string[]) {
@@ -17,13 +17,13 @@ export class SendEmailLogs implements SendLogEmailUseCase {
       const sent = await this.emailService.sendEmailWithFileSystemLogs(to);
 
       if (!sent) {
-        throw new Error('Email log not sent')
+        throw new Error('Email log not sent');
       }
 
       const log = new LogEntity({
         message: 'Log email sent',
         level: LogSeverityLevel.low,
-        origin: 'send-email-logs.ts'
+        origin: 'send-email-logs.ts',
       });
 
       this.logRepository.saveLog(log);
@@ -33,7 +33,7 @@ export class SendEmailLogs implements SendLogEmailUseCase {
       const log = new LogEntity({
         message: `${error}`,
         level: LogSeverityLevel.high,
-        origin: 'send-email-logs.ts'
+        origin: 'send-email-logs.ts',
       });
 
       this.logRepository.saveLog(log);
