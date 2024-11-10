@@ -3,3 +3,13 @@ dist/
 
 .vscode/
 .idea/
+
+logs/
+coverage/
+
+mongo/
+mongo-test/
+postgres/
+postgres-test/
+
+.env
