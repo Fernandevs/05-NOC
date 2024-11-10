@@ -1,4 +1,4 @@
-import { envs } from '@/config/plugins/env.plugin';
+import { environment } from '@/config/plugins/env.plugin';
 import nodemailer from 'nodemailer';
 
 interface SendMailOptions {
@@ -15,10 +15,10 @@ interface Attachment {
 
 export class EmailService {
   private transporter = nodemailer.createTransport({
-    service: envs.MAILER_SERVICE,
+    service: environment.MAILER_SERVICE,
     auth: {
-      user: envs.MAILER_EMAIL,
-      pass: envs.MAILER_SECRET_KEY,
+      user: environment.MAILER_EMAIL,
+      pass: environment.MAILER_SECRET_KEY,
     },
   });
 
