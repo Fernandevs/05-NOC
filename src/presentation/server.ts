@@ -1,6 +1,6 @@
 // import { envs } from '@/config/plugins/env.plugin';
 // import { CheckService } from '@/domain/use-cases/checks/ckeck-service';
-import { SendEmailLogs } from '@/domain/use-cases/email/send-email-logs';
+// import { SendEmailLogs } from '@/domain/use-cases/email/send-email-logs';
 import { FileSystemDatasource } from '@/infrastructure/datasources/file-system.datasource';
 import { LogRepositoryImpl } from '@/infrastructure/repositories/log.repository.impl';
 // import { CronService } from '@/presentation/cron/cron-service';
@@ -14,10 +14,10 @@ const emailService = new EmailService();
 
 export class Server {
   public static start() {
-    new SendEmailLogs(emailService, fileSystemLogRepository).execute([
-      'ortizfernando05@gmail.com',
-      'ortizfernando05@outlook.com',
-    ]);
+    // new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+      // 'ortizfernando05@gmail.com',
+      // 'ortizfernando05@outlook.com',
+    // ]);
     // const emailService = new EmailService();
     // emailService.sendEmailWithFileSystemLogs(['ortizfernando05@gmail.com', 'ortizfernando05@outlook.com'])
     // CronService.createJob('*/5 * * * * *', () => {
