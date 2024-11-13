@@ -28,7 +28,7 @@ export class LogEntity {
   static fromJson = (json: string): LogEntity => {
     json = json === '' ? '{}' : json;
     const { message, level, origin, createdAt } = JSON.parse(json);
-    const log = new LogEntity({ message, level, origin, createdAt });
+    const log = new LogEntity({ message, level, origin, createdAt: new Date(createdAt) });
 
     return log;
   };
